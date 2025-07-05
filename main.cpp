@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QMainWindow>
 #include <QTextEdit>
+#include <QPlainTextEdit>
 #include <QMenuBar>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -10,13 +11,12 @@
 #include <QTreeView>
 #include <QFileSystemModel>
 #include <QSettings>
-#include <QPlainTextEdit>
 #include <QToolBar>
-#include <QProcess>
-#include <QSocketNotifier>
+#include <QKeyEvent>
 #include <iostream>
 #include "syntaxhighlighter.h"
 #include "keypresshandler.h"
+#include <QProcess>
 
 class CodeEditor : public QMainWindow {
     Q_OBJECT
@@ -56,10 +56,13 @@ public:
 
         // Терминал
         terminal = new QPlainTextEdit(this);
-        terminal->setReadOnly(true);
+        terminal->setReadOnly(false); // Разрешаем ввод текста
+        terminal->setPlaceholderText("Введите команду и нажмите Enter...");
         QDockWidget *terminalDock = new QDockWidget("Терминал", this);
         terminalDock->setWidget(terminal);
         addDockWidget(Qt::BottomDockWidgetArea, terminalDock);
+
+        connect(terminal, &QPlainTextEdit::textChanged, this, &CodeEditor::onTerminalTextChanged);
 
         // Панель инструментов
         QToolBar *toolBar = addToolBar("Инструменты");
@@ -71,28 +74,32 @@ public:
 
         // Загрузка последней папки
         loadLastFolder();
-
-        // Асинхронное чтение из stdin
-        QSocketNotifier *notifier = new QSocketNotifier(fileno(stdin), QSocketNotifier::Read, this);
-        connect(notifier, &QSocketNotifier::activated, this, &CodeEditor::processConsoleInput);
     }
 
 private slots:
-    void processConsoleInput() {
-        QTextStream input(stdin);
-        QString command = input.readLine().trimmed();
+    void onTerminalTextChanged() {
+        QString text = terminal->toPlainText();
+        if (text.endsWith("\n")) { // Проверяем, нажата ли клавиша Enter
+            QString command = text.trimmed(); // Убираем лишние пробелы и символы новой строки
+            terminal->clear(); // Очищаем терминал после ввода команды
+            processCommand(command); // Обрабатываем команду
+        }
+    }
 
+    void processCommand(const QString &command) {
         if (command == "help") {
-            std::cout << "Доступные команды:\n";
-            std::cout << "  help - показать список команд\n";
-            std::cout << "  start theme dark - включить тёмную тему\n";
-            std::cout << "  start theme light - включить светлую тему\n";
+            terminal->appendPlainText("Доступные команды:\n"
+                                      "  help - показать список команд\n"
+                                      "  start theme dark - включить тёмную тему\n"
+                                      "  start theme light - включить светлую тему\n");
         } else if (command == "start theme dark") {
             applyDarkTheme();
+            terminal->appendPlainText("Тёмная тема активирована.");
         } else if (command == "start theme light") {
             applyLightTheme();
+            terminal->appendPlainText("Светлая тема активирована.");
         } else {
-            std::cout << "Неизвестная команда. Введите 'help' для списка команд.\n";
+            terminal->appendPlainText("Неизвестная команда. Введите 'help' для списка команд.");
         }
     }
 
@@ -208,12 +215,10 @@ private slots:
         qApp->setStyleSheet("QTextEdit { background-color: #2b2b2b; color: #ffffff; }"
                             "QTreeView { background-color: #2b2b2b; color: #ffffff; }"
                             "QPlainTextEdit { background-color: #2b2b2b; color: #ffffff; }");
-        std::cout << "Тёмная тема активирована.\n";
     }
 
     void applyLightTheme() {
         qApp->setStyleSheet("");
-        std::cout << "Светлая тема активирована.\n";
     }
 
 private:
