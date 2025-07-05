@@ -13,10 +13,11 @@
 #include <QSettings>
 #include <QToolBar>
 #include <QKeyEvent>
+#include <QProcess>
 #include <iostream>
 #include "syntaxhighlighter.h"
 #include "keypresshandler.h"
-#include <QProcess>
+#include "aftocomplet.h"
 
 class CodeEditor : public QMainWindow {
     Q_OBJECT
@@ -31,6 +32,8 @@ public:
         keyPressHandler = new KeyPressHandler(editor, this);
         connect(keyPressHandler, &KeyPressHandler::saveRequested, this, &CodeEditor::saveFile);
         connect(keyPressHandler, &KeyPressHandler::undoRequested, editor, &QTextEdit::undo);
+
+        autoComplete = new aftocomplet(editor, this);
 
         // Создание меню
         QMenu *fileMenu = menuBar()->addMenu("Файл");
@@ -93,8 +96,7 @@ private slots:
                                       "  start theme dark - включить тёмную тему\n"
                                       "  start theme light - включить светлую тему\n"
                                       "  start theme dark blue - включить синюю тёмную тему\n"
-                                      "  start theme dracula - включить тему Dracula\n"
-                                    );
+                                      "  start theme dracula - включить тему Dracula\n");
         } else if (command == "start theme dark") {
             applyDarkTheme();
             terminal->appendPlainText("Тёмная тема активирована.");
@@ -239,15 +241,16 @@ private slots:
     }
 
     void applyDraculaTheme() {
-        qApp->setStyleSheet("QTextEdit { background-color:rgb(74, 0, 19); color:rgb(255, 255, 255); }"
-                            "QTreeView { background-color:rgb(74, 0, 19); color:rgb(255, 255, 255); }"
-                            "QPlainTextEdit { background-color:rgb(74, 0, 19); color:rgb(255, 255, 255); }");
+        qApp->setStyleSheet("QTextEdit { background-color:rgb(14, 0, 86); color:rgb(255, 255, 255); }"
+                            "QTreeView { background-color:rgb(14, 0, 86); color:rgb(255, 255, 255); }"
+                            "QPlainTextEdit { background-color:rgb(14, 0, 86); color:rgb(255, 255, 255); }");
     }
 
 private:
     QTextEdit *editor;
     SyntaxHighlighter *highlighter;
     KeyPressHandler *keyPressHandler;
+    aftocomplet *autoComplete;
     QDockWidget *fileTreeDock;
     QTreeView *fileTree;
     QFileSystemModel *fileModel;

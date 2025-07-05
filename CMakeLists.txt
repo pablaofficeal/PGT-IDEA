@@ -18,6 +18,7 @@ add_executable(untitled20
         main.cpp
         syntaxhighlighter.cpp
         keypresshandler.cpp
+        aftocomplet.cpp
 )
 target_link_libraries(untitled20
   Qt::Core
