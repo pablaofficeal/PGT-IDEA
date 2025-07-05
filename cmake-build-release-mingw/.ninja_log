@@ -1,0 +1,21 @@
+# ninja log v6
+7	1178	7734578194713131	untitled20_autogen/timestamp	fa72b151f397897
+7	1178	7734578194713131	untitled20_autogen/mocs_compilation.cpp	fa72b151f397897
+7	1178	7734578194713131	C:/Users/pavlo/CLionProjects/untitled20/cmake-build-release-mingw/untitled20_autogen/timestamp	fa72b151f397897
+7	1178	7734578194713131	C:/Users/pavlo/CLionProjects/untitled20/cmake-build-release-mingw/untitled20_autogen/mocs_compilation.cpp	fa72b151f397897
+1209	2203	7734578195959059	CMakeFiles/untitled20.dir/src/aftocomplet.cpp.obj.ddi	1779bc629ab69dd3
+1199	2213	7734578195863872	CMakeFiles/untitled20.dir/src/syntaxhighlighter.cpp.obj.ddi	eb1967449e45da62
+1205	2224	7734578195913885	CMakeFiles/untitled20.dir/src/keypresshandler.cpp.obj.ddi	dc394eee4d5b9a39
+1192	2318	7734578195783766	CMakeFiles/untitled20.dir/src/main.cpp.obj.ddi	9edb53a171435a27
+2318	2363	7734578207443571	CMakeFiles/untitled20.dir/CXX.dd	c65a4c79cd4131f1
+2318	2363	7734578207443571	C:/Users/pavlo/CLionProjects/untitled20/cmake-build-release-mingw/CMakeFiles/untitled20.dir/CXXModules.json	c65a4c79cd4131f1
+2318	2363	7734578207443571	CMakeFiles/untitled20.dir/src/main.cpp.obj.modmap	c65a4c79cd4131f1
+2318	2363	7734578207443571	CMakeFiles/untitled20.dir/src/syntaxhighlighter.cpp.obj.modmap	c65a4c79cd4131f1
+2318	2363	7734578207443571	CMakeFiles/untitled20.dir/src/keypresshandler.cpp.obj.modmap	c65a4c79cd4131f1
+2318	2363	7734578207443571	CMakeFiles/untitled20.dir/src/aftocomplet.cpp.obj.modmap	c65a4c79cd4131f1
+1215	5661	7734578196019075	CMakeFiles/untitled20.dir/untitled20_autogen/mocs_compilation.cpp.obj	a1896d03e12571ec
+2389	6415	7734578207755526	CMakeFiles/untitled20.dir/src/aftocomplet.cpp.obj	6f12f6670ff6a8cd
+2384	6564	7734578207714489	CMakeFiles/untitled20.dir/src/keypresshandler.cpp.obj	389ae564456037ad
+2379	6988	7734578207663479	CMakeFiles/untitled20.dir/src/syntaxhighlighter.cpp.obj	af77dd411c4fba00
+2374	7738	7734578207612644	CMakeFiles/untitled20.dir/src/main.cpp.obj	41192d82fe39f6cc
+7738	8139	7734578261252142	untitled20.exe	fa72e067edd0af8d
