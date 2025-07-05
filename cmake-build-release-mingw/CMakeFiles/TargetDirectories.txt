@@ -1,5 +1,0 @@
-C:/Users/pavlo/CLionProjects/untitled20/cmake-build-release-mingw/CMakeFiles/untitled20.dir
-C:/Users/pavlo/CLionProjects/untitled20/cmake-build-release-mingw/CMakeFiles/edit_cache.dir
-C:/Users/pavlo/CLionProjects/untitled20/cmake-build-release-mingw/CMakeFiles/rebuild_cache.dir
-C:/Users/pavlo/CLionProjects/untitled20/cmake-build-release-mingw/CMakeFiles/untitled20_autogen_timestamp_deps.dir
-C:/Users/pavlo/CLionProjects/untitled20/cmake-build-release-mingw/CMakeFiles/untitled20_autogen.dir

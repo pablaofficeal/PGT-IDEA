@@ -1,9 +1,0 @@
-ninja_dyndep_version = 1.0
-build CMakeFiles/untitled20.dir/src/main.cpp.obj: dyndep
-
-build CMakeFiles/untitled20.dir/src/syntaxhighlighter.cpp.obj: dyndep
-
-build CMakeFiles/untitled20.dir/src/keypresshandler.cpp.obj: dyndep
-
-build CMakeFiles/untitled20.dir/src/aftocomplet.cpp.obj: dyndep
-
