@@ -91,13 +91,22 @@ private slots:
             terminal->appendPlainText("Доступные команды:\n"
                                       "  help - показать список команд\n"
                                       "  start theme dark - включить тёмную тему\n"
-                                      "  start theme light - включить светлую тему\n");
+                                      "  start theme light - включить светлую тему\n"
+                                      "  start theme dark blue - включить синюю тёмную тему\n"
+                                      "  start theme dracula - включить тему Dracula\n"
+                                    );
         } else if (command == "start theme dark") {
             applyDarkTheme();
             terminal->appendPlainText("Тёмная тема активирована.");
         } else if (command == "start theme light") {
             applyLightTheme();
             terminal->appendPlainText("Светлая тема активирована.");
+        } else if (command == "start theme dark blue") {
+            applyDarkBlueTheme();
+            terminal->appendPlainText("Синяя тёмная тема активирована.");
+        } else if (command == "start theme dracula") {
+            applyDraculaTheme();
+            terminal->appendPlainText("Тема Dracula активирована.");
         } else {
             terminal->appendPlainText("Неизвестная команда. Введите 'help' для списка команд.");
         }
@@ -218,7 +227,21 @@ private slots:
     }
 
     void applyLightTheme() {
-        qApp->setStyleSheet("");
+        qApp->setStyleSheet("QTextEdit { background-color: #ffffff; color: #000000; }"
+                            "QTreeView { background-color: #ffffff; color: #000000; }"
+                            "QPlainTextEdit { background-color: #ffffff; color: #000000; }");
+    }
+
+    void applyDarkBlueTheme() {
+        qApp->setStyleSheet("QTextEdit { background-color: #1e1e2f; color: #dcdcdc; }"
+                            "QTreeView { background-color: #1e1e2f; color: #dcdcdc; }"
+                            "QPlainTextEdit { background-color: #1e1e2f; color: #dcdcdc; }");
+    }
+
+    void applyDraculaTheme() {
+        qApp->setStyleSheet("QTextEdit { background-color:rgb(74, 0, 19); color:rgb(255, 255, 255); }"
+                            "QTreeView { background-color:rgb(74, 0, 19); color:rgb(255, 255, 255); }"
+                            "QPlainTextEdit { background-color:rgb(74, 0, 19); color:rgb(255, 255, 255); }");
     }
 
 private:
