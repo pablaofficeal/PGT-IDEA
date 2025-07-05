@@ -15,10 +15,10 @@ find_package(Qt6 COMPONENTS
   REQUIRED)
 
 add_executable(untitled20
-        main.cpp
-        syntaxhighlighter.cpp
-        keypresshandler.cpp
-        aftocomplet.cpp
+        src/main.cpp
+        src/syntaxhighlighter.cpp
+        src/keypresshandler.cpp
+        src/aftocomplet.cpp
 )
 target_link_libraries(untitled20
   Qt::Core
